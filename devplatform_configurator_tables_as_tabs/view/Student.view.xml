@@ -1,0 +1,145 @@
+ 
+
+<mvc:View
+	controllerName="com.devplatform.config.controller.Student"
+	displayBlock="true"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox>
+		<items>
+			<Table
+				id="studentsTable"
+				growing="true"
+				growingThreshold="3"
+				items="{
+						path: '/Students',
+						parameters: {
+							$count: true														
+						}
+					}"
+				mode="SingleSelectLeft">
+				<!--  ,$$updateGroupId : 'peopleGroup' 
+				// inside item aggregation
+				, 
+						events:{
+							change: '.onChangeHandler'
+						}
+				-->
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<ToolbarSpacer/>
+						<SearchField
+							id="searchFieldStudents"
+							width="20%"
+							placeholder="{i18n>searchFieldPlaceholder}"
+							enabled="{= !${appView>/hasUIChanges}}"
+							search=".onSearch"/>
+						<Button
+							id="addStudentButton"
+							icon="sap-icon://add"
+							tooltip="Create Student"
+							press=".onCreate">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>						
+						<Button
+							id="sortByStudentsButton"
+							icon="sap-icon://sort"
+							enabled="true"
+							tooltip="Sort by"
+							press=".handleSortButtonPressed"/>
+					</content>
+					<Button
+							id="refreshStudentsButton"
+							icon="sap-icon://refresh"
+							enabled="{= !${appView>/hasUIChanges}}"
+							tooltip="Refresh Student"
+							press=".onRefresh"/>
+					<Button
+							id="groupByStudentsButton"
+							tooltip="Group By"
+							icon="sap-icon://group-2"
+							press=".handleGroupButtonPressed" />
+					<Button
+							id="deleteStudentButton"
+							icon="sap-icon://delete"
+							tooltip="Delete Student"
+							press=".onDelete">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column id="NameColumn">
+					<Text text="Name"/>
+					<!-- <Text text="{i18n>NameLabelText}"/> -->
+				</Column>
+				<Column id="PhoneNoColumn">
+					<Text text="PhoneNo"/>
+					<!-- <Text text="{i18n>PhoneNoLabelText}"/> -->
+				</Column>
+				<Column id="EmailColumn">
+					<Text text="Email"/>
+					<!-- <Text text="{i18n>EmailLabelText}"/> -->
+				</Column>
+				<Column id="StudentIdColumn">
+					<Text text="StudentId"/>
+					<!-- <Text text="{i18n>StudentIdLabelText}"/> -->
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem id="table_col">
+					<cells>
+						<Input
+							id="id_Name"
+							value="{Name}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+					<cells>
+						<Input
+							id="id_PhoneNo"
+							value="{PhoneNo}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+					<cells>
+						<Input
+							id="id_Email"
+							value="{Email}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+					<cells>
+						<Input
+							id="id_StudentId"
+							value="{StudentId}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+				<!-- <footer> -->
+					<Toolbar visible="{appView>/hasUIChanges}">
+						<ToolbarSpacer/>
+						<Button
+							id="saveButton"
+							type="Emphasized"
+							text="{i18n>saveButtonText}"
+							enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/usernameEmpty} === false }"
+							press=".onSave"/>
+						<Button
+							id="doneButton"
+							text="{i18n>cancelButtonText}"
+							press=".onResetChanges"/>
+					</Toolbar>
+				<!-- </footer> -->
+			</items>
+	</VBox>
+</mvc:View>	

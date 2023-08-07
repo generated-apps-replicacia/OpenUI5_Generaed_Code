@@ -1,0 +1,17 @@
+<mvc:View
+	controllerName="com.devplatform.config.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Shell>
+		<App id="app" class="sapUiSizeCompact">
+			<pages>
+				<Page title="{i18n>peoplePageTitle}">
+					<content>
+						<mvc:XMLView viewName="com.devplatform.config.view.TablesAsTabsView" />
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

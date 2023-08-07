@@ -1,0 +1,14 @@
+
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm=".handleGroupDialogConfirm">
+		<groupItems>
+		<ViewSettingsItem text="Name" key="Name" />
+		<ViewSettingsItem text="PhoneNo" key="PhoneNo" />
+		<ViewSettingsItem text="Email" key="Email" />
+		<ViewSettingsItem text="StudentId" key="StudentId" />
+		</groupItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

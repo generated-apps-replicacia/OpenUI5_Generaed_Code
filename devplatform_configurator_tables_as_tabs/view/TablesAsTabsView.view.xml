@@ -1,0 +1,31 @@
+<mvc:View 	controllerName="com.devplatform.config.controller.TablesAsTabsController"
+			height="100%"
+			xmlns:f="sap.ui.layout.form"
+			xmlns:core="sap.ui.core"
+			xmlns:mvc="sap.ui.core.mvc"
+			xmlns="sap.m">
+	<TabContainer id="myTabContainer"
+			showAddNewButton="true"
+			class="sapUiResponsiveContentPadding"
+			addNewButtonPress="addNewButtonPressHandler" itemClose="itemCloseHandler">
+			<!-- items="{ path: '/Tiers' }"  -->
+		<items>
+						<TabContainerItem
+				name="Students"
+				icon="sap-icon://table-view"
+				iconTooltip="iconTooltip">
+				<content>
+						<mvc:XMLView id="StudentTableView" viewName="com.devplatform.config.view.Student" />
+				</content>
+			</TabContainerItem>
+				<TabContainerItem
+				name="Courses"
+				icon="sap-icon://table-view"
+				iconTooltip="iconTooltip">
+				<content>
+						<mvc:XMLView id="CourseTableView" viewName="com.devplatform.config.view.Course" />
+				</content>
+			</TabContainerItem>
+		</items>
+	</TabContainer>
+</mvc:View>

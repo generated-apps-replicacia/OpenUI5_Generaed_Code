@@ -1,0 +1,123 @@
+ 
+
+<mvc:View
+	controllerName="com.devplatform.config.controller.Course"
+	displayBlock="true"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox>
+		<items>
+			<Table
+				id="coursesTable"
+				growing="true"
+				growingThreshold="3"
+				items="{
+						path: '/Courses',
+						parameters: {
+							$count: true														
+						}
+					}"
+				mode="SingleSelectLeft">
+				<!--  ,$$updateGroupId : 'peopleGroup' 
+				// inside item aggregation
+				, 
+						events:{
+							change: '.onChangeHandler'
+						}
+				-->
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<ToolbarSpacer/>
+						<SearchField
+							id="searchFieldCourses"
+							width="20%"
+							placeholder="{i18n>searchFieldPlaceholder}"
+							enabled="{= !${appView>/hasUIChanges}}"
+							search=".onSearch"/>
+						<Button
+							id="addCourseButton"
+							icon="sap-icon://add"
+							tooltip="Create Course"
+							press=".onCreate">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>						
+						<Button
+							id="sortByCoursesButton"
+							icon="sap-icon://sort"
+							enabled="true"
+							tooltip="Sort by"
+							press=".handleSortButtonPressed"/>
+					</content>
+					<Button
+							id="refreshCoursesButton"
+							icon="sap-icon://refresh"
+							enabled="{= !${appView>/hasUIChanges}}"
+							tooltip="Refresh Course"
+							press=".onRefresh"/>
+					<Button
+							id="groupByCoursesButton"
+							tooltip="Group By"
+							icon="sap-icon://group-2"
+							press=".handleGroupButtonPressed" />
+					<Button
+							id="deleteCourseButton"
+							icon="sap-icon://delete"
+							tooltip="Delete Course"
+							press=".onDelete">
+							<layoutData>
+								<OverflowToolbarLayoutData priority="NeverOverflow"/>
+							</layoutData>
+						</Button>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column id="CourseNameColumn">
+					<Text text="CourseName"/>
+					<!-- <Text text="{i18n>CourseNameLabelText}"/> -->
+				</Column>
+				<Column id="CourseIdColumn">
+					<Text text="CourseId"/>
+					<!-- <Text text="{i18n>CourseIdLabelText}"/> -->
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem id="table_col">
+					<cells>
+						<Input
+							id="id_CourseName"
+							value="{CourseName}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+					<cells>
+						<Input
+							id="id_CourseId"
+							value="{CourseId}"
+							valueLiveUpdate="true"
+							liveChange=".onInputChange"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+				<!-- <footer> -->
+					<Toolbar visible="{appView>/hasUIChanges}">
+						<ToolbarSpacer/>
+						<Button
+							id="saveButton"
+							type="Emphasized"
+							text="{i18n>saveButtonText}"
+							enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/usernameEmpty} === false }"
+							press=".onSave"/>
+						<Button
+							id="doneButton"
+							text="{i18n>cancelButtonText}"
+							press=".onResetChanges"/>
+					</Toolbar>
+				<!-- </footer> -->
+			</items>
+	</VBox>
+</mvc:View>	
